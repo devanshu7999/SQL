@@ -138,4 +138,12 @@ where o.quantity>2
 order by quantity desc;
 
 --t11
-
+SELECT
+C.customer_id,
+C.customer_name,
+SUM(o.amount) as total_amount 
+FROM Customer AS c 
+left join
+Orders as o
+on c.customer_id=o.customer_id
+group by c.customer_id , c.customer_name;
